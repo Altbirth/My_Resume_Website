@@ -1,7 +1,368 @@
-body {
-    font-family: Arial, sans-serif;
+/* =========================================================================
+   css/style.css
+   Full, updated stylesheet for My_Resume_Website
+   - Larger hero background with stronger Ken-Burns (zoom + fade)
+   - Navbar, layout, cards, certificates carousel, profile images, accessibility
+   ========================================================================= */
+
+/* -------------------------
+   Root variables (easy customization)
+   ------------------------- */
+:root{
+  --nav-height: 70px;                      /* height of fixed navbar */
+  --accent: #0d6efd;                       /* primary accent (buttons, active link) */
+  --muted: #6c757d;
+  --bg: #ffffff;
+  --text: #111827;
+  --card: #ffffff;
+
+  /* Hero slide settings */
+  --hero-slide-count: 3;                   /* update if you change number of slides */
+  --hero-slide-duration: 5s;               /* duration each slide is visible (seconds) */
+  --hero-total-duration: calc(var(--hero-slide-count) * var(--hero-slide-duration));
+
+  /* Ken-Burns scale: larger values -> bigger background zoom */
+  --hero-start-scale: 1.12;                /* initial scale for each slide */
+  --hero-end-scale: 1.20;                  /* final scale (when fading out) */
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-h2 {
-    margin-bottom: 20px;
+/* -------------------------
+   Global layout & typography
+   ------------------------- */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -------------------------
+   Fixed navbar + content offset
+   ------------------------- */
+#siteNavbar {
+  height: var(--nav-height);
+  display:flex;
+  align-items:center;
+  z-index: 1100;
+  background: rgba(255,255,255,0.95); /* slight translucency */
+  backdrop-filter: saturate(120%) blur(4px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.pt-nav { padding-top: var(--nav-height); min-height: calc(100vh - var(--nav-height)); }
+
+/* Navbar brand profile icon */
+.profile-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid rgba(0,0,0,0.05);
+}
+
+/* nav active link */
+.navbar-nav .nav-link.active {
+  color: var(--accent) !important;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* responsive collapse tweaks */
+@media (max-width: 991px) {
+  .navbar-nav { text-align: center; }
+  .navbar-nav .nav-link { padding: .6rem 1rem; }
+}
+
+/* -------------------------
+   Hero (background slider + content)
+   ------------------------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(95vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* slider wrapper (covers full hero area) */
+.hero-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* each slide covers the hero and uses CSS animations for fade+zoom */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(var(--hero-start-scale));
+  will-change: opacity, transform;
+  animation: hero-fade-zoom var(--hero-total-duration) linear infinite;
+}
+
+/* stagger delay for each child slide (nth-child) */
+/* Note: update these nth-child rules if you change --hero-slide-count */
+.hero-slider .hero-slide:nth-child(1) { animation-delay: calc(0 * var(--hero-slide-duration)); }
+.hero-slider .hero-slide:nth-child(2) { animation-delay: calc(1 * var(--hero-slide-duration)); }
+.hero-slider .hero-slide:nth-child(3) { animation-delay: calc(2 * var(--hero-slide-duration)); }
+/* Add more nth-child lines if you add slides */
+
+/* overlay for readability */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.40), rgba(0,0,0,0.40));
+  z-index: 1;
+}
+
+/* hero content sits above overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+/* hero text entrance */
+.hero-title, .hero-sub {
+  animation: hero-text-in 700ms ease-out both;
+}
+
+/* size tweaks */
+.hero-title { font-size: clamp(2rem, 4.0vw, 3.25rem); letter-spacing: -0.02em; }
+.hero-sub   { font-size: clamp(1.1rem, 2.4vw, 1.35rem); opacity: 0.98; }
+
+/* Ken-Burns + fade keyframes (uses css variables for easy tuning) */
+@keyframes hero-fade-zoom {
+  0%   { opacity: 0; transform: scale(var(--hero-start-scale)); }
+  6%   { opacity: 1; transform: scale(calc(var(--hero-start-scale) + ( (var(--hero-end-scale) - var(--hero-start-scale)) * 0.25 ))); }
+  40%  { opacity: 1; transform: scale(calc(var(--hero-start-scale) + ( (var(--hero-end-scale) - var(--hero-start-scale)) * 0.65 ))); }
+  46%  { opacity: 0; transform: scale(var(--hero-end-scale)); }
+  100% { opacity: 0; transform: scale(var(--hero-end-scale)); }
+}
+
+/* entrance animation for hero text */
+@keyframes hero-text-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* responsive hero heights */
+@media (max-width: 767px) {
+  .hero { min-height: calc(45vh - var(--nav-height)); }
+}
+
+/* support reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .hero-title, .hero-sub { animation: none !important; }
+}
+
+/* -------------------------
+   About preview / profile image
+   ------------------------- */
+.profile-large {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 4px solid rgba(0,0,0,0.04);
+  background: #fff;
+}
+
+@media (max-width: 767px) {
+  .profile-large { width: 160px; height: 160px; }
+}
+
+/* -------------------------
+   Content sections, cards, and utilities
+   ------------------------- */
+section { padding-left: 1rem; padding-right: 1rem; }
+
+.card {
+  border: 0;
+  border-radius: 10px;
+}
+
+/* subtle card shadow */
+.shadow-sm {
+  box-shadow: 0 6px 14px rgba(16,24,40,0.06);
+}
+
+/* small muted text helper */
+.small-muted { color: var(--muted); }
+
+/* -------------------------
+   Certificates carousel image sizing
+   ------------------------- */
+.carousel-cert-img {
+  max-height: 420px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* responsive certificate image */
+@media (max-width: 767px) {
+  .carousel-cert-img { max-height: 300px; }
+}
+
+/* -------------------------
+   Buttons & CTA styles
+   ------------------------- */
+.btn-primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+/* -------------------------
+   Footer
+   ------------------------- */
+footer {
+  background: transparent;
+  color: var(--muted);
+}
+
+/* -------------------------
+   Utility spacing & layout helpers
+   ------------------------- */
+.text-center { text-align: center; }
+
+/* -------------------------
+   Accessibility & text contrast helpers
+   ------------------------- */
+.hero-overlay, .hero .btn-outline-light {
+  /* ensure overlay is not too dark for readability */
+}
+
+
+/* End of Home Page */
+
+
+
+
+/* =========================================================
+   CSS: About Page (append to css/style.css)
+   Belongs to: about.html
+   Added: 2026-01-16
+   ========================================================= */
+
+/* About hero (single background image) */
+.about-hero {
+  position: relative;
+  min-height: calc(65vh - var(--nav-height)); /* prominent height */
+  display: flex;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+  background-image: url('../assets/images/about-hero.jpg'); /* required file */
+  background-size: cover;
+  background-position: center center;
+}
+
+/* darker overlay to increase text contrast */
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45));
+  z-index: 0;
+}
+
+/* hero text sits above overlay */
+.about-hero .about-hero-title,
+.about-hero .about-hero-sub {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 6px 24px rgba(0,0,0,0.45);
+}
+
+.about-hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  color: #fff;
+}
+
+.about-hero-sub {
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  margin-bottom: 0;
+  text-align: left;
+  color: rgba(255,255,255,0.95);
+}
+
+/* position left-align within the hero container */
+.about-hero .container { max-width: 1100px; }
+.about-hero .row { margin-left: 0; }
+
+/* Wave separators */
+.wave { line-height: 0; }
+.wave svg { display: block; width: 100%; height: 80px; }
+
+/* alternate fill colors use page background colors (white and #f8f9fa) */
+.wave-down svg path { fill: #ffffff; }
+.wave-up svg path { fill: #f8f9fa; }
+
+/* Timeline (education) */
+.timeline { border-left: 3px solid rgba(13,110,253,0.08); padding-left: 1rem; }
+.timeline-item { display: flex; gap: 1rem; padding: 1rem 0; }
+.timeline-left { min-width: 220px; }
+.timeline-right { flex: 1; }
+
+/* small-muted helper (if not already present) */
+.small-muted { color: var(--muted); }
+
+/* Cards consistency */
+.card { border-radius: 12px; border: 0; }
+
+/* responsive reflow: stack image under text on small screens */
+@media (max-width: 991px) {
+  .about-hero { min-height: calc(45vh - var(--nav-height)); background-position: center 30%; }
+  .about-hero-title { text-align: center; }
+  .about-hero-sub { text-align: center; }
+  .wave svg { height: 60px; }
+  .timeline { padding-left: 0; border-left: none; }
+  .timeline-item { flex-direction: column; }
+  .timeline-left { min-width: auto; }
+}
+
+/* prefers-reduced-motion: remove any animation on hero background (static image) */
+@media (prefers-reduced-motion: reduce) {
+  .about-hero { background-attachment: initial; }
+}
+
+
+/* =========================================================
+   END: CSS: About Page
+   ========================================================= */
+
+
+
+
+
+
+
+
+/* End of css/style.css */
+
+
