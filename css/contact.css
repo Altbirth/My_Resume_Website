@@ -1,0 +1,226 @@
+/* =========================================================
+   CSS: Contact Page (standalone file css/contact.css)
+   Belongs to: contact.html
+   Purpose: Full, self-contained CSS for Contact page only.
+            Navbar container rules match Home so header spacing
+            is consistent across pages.
+   Added: 2026-01-17
+   ========================================================= */
+
+:root{
+  --nav-height: 70px;
+  --accent: #0d6efd;
+  --accent-2: #6f42c1;
+  --panel: #f6f7f5;
+  --muted: #6c757d;
+  --text: #0b1220;
+}
+
+/* Page scope */
+.contact-page {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: var(--panel);
+  color: var(--text);
+}
+
+/* =========================
+   NAVBAR — visual identical to Home
+   ========================= */
+
+/* Base visual treatment (translucent, blur, thin shadow) */
+.contact-page #siteNavbar {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  z-index: 1100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: saturate(120%) blur(4px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+/* IMPORTANT: enforce the same centered container width/padding
+   used on Home so brand/nav spacing is consistent */
+.contact-page #siteNavbar .container {
+  max-width: 1100px;      /* same site width as Home */
+  margin: 0 auto;
+  padding-left: 1.25rem;  /* same horizontal padding */
+  padding-right: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* brand left, nav right */
+  gap: 1rem;
+}
+
+/* Brand area (profile icon + name) */
+.contact-page #siteNavbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-right: 0;
+}
+
+/* profile icon (same dimensions and styling as Home) */
+.contact-page .profile-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid rgba(0,0,0,0.05);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* NAV LINKS: push group to far right and set comfortable spacing */
+.contact-page .navbar-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 18px; /* matches Home spacing */
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Link appearance (matching Home) */
+.contact-page .navbar-nav .nav-link {
+  color: rgba(0,0,0,0.75);
+  padding: .6rem 1rem;
+  transition: color .15s ease;
+}
+.contact-page .navbar-nav .nav-link:hover {
+  color: var(--accent);
+}
+
+/* active underline matching Home */
+.contact-page .navbar-nav .nav-link.active {
+  color: var(--accent) !important;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* mobile: collapse to vertical stack and remove left margin */
+@media (max-width: 991px) {
+  .contact-page #siteNavbar .container { padding-left: 1rem; padding-right: 1rem; }
+  .contact-page .navbar-nav { flex-direction: column; gap: 0; margin-left: 0; }
+  .contact-page .navbar-nav .nav-link { padding: .6rem 1rem; width: 100%; text-align:center; }
+}
+
+/* ensure body content is offset under fixed navbar */
+.contact-page .pt-nav { padding-top: var(--nav-height); }
+
+/* =========================
+   HERO and PAGE LAYOUT (kept from previous contact.css, minor tuning)
+   ========================= */
+
+.contact-hero {
+  position: relative;
+  min-height: 45vh;
+  background: url("../assets/images/contact-bgpic.jpg") center/cover no-repeat;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.contact-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.contact-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 3rem 1rem;
+}
+
+.contact-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  margin: 0 0 .5rem 0;
+}
+
+.contact-hero p {
+  font-size: 1.05rem;
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* wave under hero */
+.hero-wave {
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+}
+.hero-wave path {
+  fill: var(--panel);
+}
+
+/* =========================
+   CONTACT CARDS
+   ========================= */
+
+.contact-section { padding: 3rem 0; }
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+
+/* card baseline */
+.contact-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.6rem;
+  text-align: center;
+  height: 100%;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .28s ease, box-shadow .28s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* icon */
+.contact-card i {
+  font-size: 2.1rem;
+  color: var(--accent-2);
+  margin-bottom: .5rem;
+}
+
+/* title and handle */
+.contact-card h5 { margin-bottom: .25rem; font-weight: 600; }
+.contact-card span { font-size: .95rem; color: #555; }
+
+/* hover effect */
+.contact-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow:
+    0 0 0 2px rgba(0,230,118,0.06),
+    0 20px 50px rgba(0,0,0,0.12);
+}
+
+/* make non-anchor display same look (for Discord/Riot local text) */
+.contact-card:not([href]) { cursor: default; }
+
+/* =========================
+   FOOTER
+   ========================= */
+.contact-page footer { color: var(--muted); padding-bottom: 3rem; }
+
+/* =========================
+   Responsive safety & reduced motion
+   ========================= */
+@media (max-width: 767px) {
+  .contact-hero { min-height: 38vh; background-position: center 30%; }
+  .contact-card i { font-size: 1.9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card, .contact-card:hover { transform: none !important; transition: none !important; box-shadow: none !important; }
+}
+
+/* =========================================================
+   END: CSS: Contact Page
+   ========================================================= */

@@ -3,26 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Achievement — My Resume Website</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <title>Achievements — My Resume Website</title>
 
+  <!-- Bootstrap (layout + components) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Page-specific CSS only -->
+  <link rel="stylesheet" href="css/achievement.css">
+</head>
+<body class="achievement-page">
+
+  <!-- NAVBAR (same structure as Home/ About; visual in css/achievement.css) -->
   <nav id="siteNavbar" class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="assets/images/profile.png" alt="Profile" class="profile-icon me-2">
-        <span class="fw-bold">YourName</span>
+        <!-- <img src="assets/images/profile.png" alt="Profile" class="profile-icon me-2"> -->
+        <span class="fw-bold">ALBERT</span>
       </a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse justify-content-end" id="navMain">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav align-items-center">
           <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">ABOUT ME</a></li>
-          <li class="nav-item"><a class="nav-link" href="achievement.html">ACHIEVEMENT</a></li>
+          <li class="nav-item"><a class="nav-link active" href="achievement.html">ACHIEVEMENT</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT LINK</a></li>
         </ul>
       </div>
@@ -30,25 +37,285 @@
   </nav>
 
   <main class="pt-nav">
-    <section class="py-5">
+
+    <!-- HERO: single background element with Ken-Burns animation -->
+    <header class="ach-hero d-flex align-items-center">
+      <!-- This element renders the animated background.
+           Replace assets/images/achievement-hero.jpg with your image. -->
+      <div class="ach-hero-bg" role="img" aria-label="Achievements background"></div>
+
+      <div class="ach-hero-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <div class="row">
+          <div class="col-lg-8">
+            <h1 class="display-4">Achievements & Projects</h1>
+            <p class="lead">Certificates I earned and projects I built — selected highlights with links and screenshots.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SVG wave at bottom to visually transition into the content -->
+      <div class="hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+          <path class="wave-fill" d="M0,40 C360,120 720,0 1080,40 C1260,64 1320,88 1440,96 L1440 140 L0 140 Z"></path>
+        </svg>
+      </div>
+    </header>
+
+    <!-- CERTIFICATES: grid of cards styled like project cards -->
+    <section id="certificates" class="py-5 bg-panel">
       <div class="container">
-        <h1>Achievements</h1>
-        <ul class="mt-4">
-          <li><strong>Achievement 1</strong> — brief explanation and year.</li>
-          <li><strong>Achievement 2</strong> — brief explanation and year.</li>
-          <li><strong>Achievement 3</strong> — brief explanation and year.</li>
-        </ul>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="mb-0">Certificates</h2>
+          <!-- <p class="text-muted small mb-0">Click View to see details or Download to get the full file.</p> -->
+        </div>
+
+        <div class="row g-4 mt-3">
+          <!-- Certificate card (repeat as needed) -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card project-card h-100 certificate-card">
+              <img src="assets/images/software-cert.png" class="card-img-top" alt="Certificate 1">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Certificate: Operating System</h5>
+                <!-- <p class="card-text small text-muted mb-2">Issued: 2024 — Provider Name</p> -->
+                <div class="mt-auto d-flex gap-2">
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#certModal1">View</button>
+                  <a class="btn btn-primary btn-sm" href="assets/images/software-cert.png" download>Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificate 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card project-card h-100 certificate-card">
+              <img src="assets/images/software-cert.png" class="card-img-top" alt="Certificate 2">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Certificate — Computer Hardware</h5>
+                <!-- <p class="card-text small text-muted mb-2">Issued: 2023 — Provider Name</p> -->
+                <div class="mt-auto d-flex gap-2">
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#certModal2">View</button>
+                  <a class="btn btn-primary btn-sm" href="assets/images/software-cert.png" download>Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificate 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card project-card h-100 certificate-card">
+              <img src="assets/images/freecodecamp.png" class="card-img-top" alt="Certificate 3">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Certificate — Data Analysis With Python</h5>
+                <!-- <p class="card-text small text-muted mb-2">Issued: 2022 — Provider Name</p> -->
+                <div class="mt-auto d-flex gap-2">
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#certModal3">View</button>
+                  <a class="btn btn-primary btn-sm" href="assets/images/freecodecamp.png" download>Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
+    <!-- Wave -->
+    <div class="section-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#ffffff"></path></svg>
+    </div>
+
+    <!-- PROJECTS: grid of project cards (unchanged look) -->
+    <section id="projects" class="py-5 bg-white">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="mb-0">Selected Projects</h2>
+        </div>
+
+        <div class="row g-4 mt-3">
+          <!-- Project 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card project-card h-100">
+              <img src="assets/images/project1.png" class="card-img-top" alt="Project 1 screenshot">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">FerSoil: A Soil Fertility Classification Mobile Application Using
+Convolutional Neural Network </h5>
+                <p class="card-text small text-muted mb-2">Developed a mobile application that integrates the CNN model to analyze soil
+images and predict their fertility.</p>
+                <div class="mt-auto d-flex gap-2">
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projModal1">Details</button>
+                  <a class="btn btn-primary btn-sm" href="https://github.com/Altbirth/Fersoil-Final.git" target="_blank" rel="noopener">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card project-card h-100">
+              <img src="assets/images/projectweb1.png" class="card-img-top" alt="Project 2 screenshot">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Enhancing Administrative Efficiency: A Web-Based Solution
+for Streamlined Student Affairs Management in ACS
+Organizations</h5>
+                <p class="card-text small text-muted mb-2">Developed and contributed to 'Keeppay,' a web-based application designed
+for efficient student affairs and financial management. Responsibilities
+included implementing key features such as user authentication, and
+payment tracking.</p>
+                <div class="mt-auto d-flex gap-2">
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projModal2">Details</button>
+                  <a class="btn btn-primary btn-sm" href="https://github.com/2Ruby-icK6/Soft-Eng.git" target="_blank" rel="noopener">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card project-card h-100">
+              <img src="assets/images/ias-firstwebsite.png" class="card-img-top" alt="Project 3 screenshot">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">IAS-First Web</h5>
+                <p class="card-text small text-muted mb-2">A dynamic Website using PHP, HTMl and CSS</p>
+                <div class="mt-auto d-flex gap-2">
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projModal3">Details</button>
+                  <a class="btn btn-primary btn-sm" href="https://github.com/Altbirth/IAS-FirstWeb.git" target="_blank" rel="noopener">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Final wave and footer -->
+    <div class="section-wave section-wave--alt">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#f6f7f5"></path></svg>
+    </div>
+
     <footer class="py-4 text-center small">
-      © <span id="year"></span> Your Name
+      © <span id="year"></span> Albert G Mirasol Jr.
     </footer>
   </main>
 
+  <!-- Certificate modals -->
+  <div class="modal fade" id="certModal1" tabindex="-1" aria-labelledby="certModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="certModal1Label">Certificate: Operating System</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/images/software-cert.png" class="img-fluid mb-3" alt="Certificate 1">
+          <img src="assets/images/Cisco-Software-Cert.png" class="img-fluid mb-3" alt="Certificate 1">
+          <!-- <p>Details about this certificate: provider, topics covered, issuing date, and verification link.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="certModal2" tabindex="-1" aria-labelledby="certModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="certModal2Label">Certificate — Computer Hardware</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/images/ComputerHardware-Certificate.png" class="img-fluid mb-3" alt="Certificate 2">
+          <img src="assets/images/Cisco-ComputerHardware-Certificate.png" class="img-fluid mb-3" alt="Certificate 2">
+          <!-- <p>Details about this certificate and where to verify it.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="certModal3" tabindex="-1" aria-labelledby="certModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="certModal3Label">Certificate — Data Analysis With Python</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/images/freecodecamp.png" class="img-fluid mb-3" alt="Certificate 3">
+          <!-- <p>Details about this certificate and verification information.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project modals (unchanged) -->
+  <div class="modal fade" id="projModal1" tabindex="-1" aria-labelledby="projModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projModal1Label">FerSoil</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/images/project1.png" alt="Project 1 screenshot" class="img-fluid mb-3">
+          <img src="assets/images/project2.png" alt="Project 1 screenshot" class="img-fluid mb-3">
+          <p>Developed a mobile application that integrates the CNN model to analyze soil
+images and predict their fertility. The app is designed to scan uploaded or captured
+images of the soil and predict its fertility using the built-in CNN model.</p>
+          <p><strong>Tech:</strong> React Native · Python · REST API </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projModal2" tabindex="-1" aria-labelledby="projModal2Label" aria-hidden="true">
+   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projModal2Label">KEEP PAY</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/images/projectweb1.png" alt="Project 2 screenshot" class="img-fluid mb-3">
+          <img src="assets/images/projectweb2.png" alt="Project 2 screenshot" class="img-fluid mb-3">
+          <p>The development of "Enhancing Administrative Efficiency: A Web-Based Solution for Streamlined Student Affairs Management in ACS Organizations," successfully addressed the limitations of manual administrative tasks within the Association of Computer Science (ACS) at Palawan State University. This study aimed to eliminate the inefficiencies and errors associated with manual data management by developing a user-friendly, secure web-based student information system.</p>
+          <p><strong>Tech:</strong> HTML · CSS · Python · Django</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projModal3" tabindex="-1" aria-labelledby="projModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projModal3Label">IAS-First Web</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/images/ias-firstwebsite.png" alt="Project 3 screenshot" class="img-fluid mb-3">
+          <p>This is a college project where I build a dynamic Website using HTML, CSS, and PHP</p>
+          <p><strong>Tech:</strong> HTML · CSS · PHP</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script> document.getElementById('year').textContent = new Date().getFullYear();
-    (function(){ const path = location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll('.navbar-nav .nav-link').forEach(a=>{ if (a.getAttribute('href') === path) a.classList.add('active'); }); })();</script>
+
+  <script>
+    // set current year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // mark active nav link
+    (function(){
+      const path = location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll('.navbar-nav .nav-link').forEach(a=>{
+        if (a.getAttribute('href') === path) a.classList.add('active');
+      });
+    })();
+  </script>
 </body>
 </html>

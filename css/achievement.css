@@ -1,0 +1,283 @@
+/* =========================================================
+   CSS: Achievement Page (standalone file css/achievement.css)
+   Belongs to: achievement.html
+   Purpose: Full styles for Achievements (certificates + projects)
+   - Hero uses Ken-Burns animation on a single background element.
+   - Certificates are displayed as project-style cards.
+   - Header container rules ensure header spacing matches Home/About.
+   ========================================================= */
+
+:root{
+  --nav-height: 70px;
+  --accent: #22d3ee;
+  --panel: #f6f7f5;
+  --muted: #6c757d;
+  --text: #0b1220;
+  --bg-dark: #071024;
+}
+
+/* Page scope */
+.achievement-page {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: var(--panel);
+}
+
+/* -------------------------
+   NAVBAR — identical container rules as Home
+   ------------------------- */
+.achievement-page #siteNavbar {
+  height: var(--nav-height);
+  display:flex;
+  align-items:center;
+  z-index:1100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: saturate(120%) blur(4px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+/* container sizing identical to Home so header spacing is consistent */
+.achievement-page #siteNavbar .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.achievement-page #siteNavbar .navbar-brand { display:flex; align-items:center; gap:.5rem; margin-right:0; }
+.achievement-page .profile-icon { width:44px; height:44px; object-fit:cover; border-radius:8px; border:2px solid rgba(0,0,0,0.05); }
+
+/* nav group rules */
+.achievement-page .navbar-nav {
+  margin-left: auto;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  list-style:none;
+  padding-left:0;
+  margin-top:0;
+  margin-bottom:0;
+}
+.achievement-page .navbar-nav .nav-link { color: rgba(0,0,0,0.75); padding:.6rem 1rem; }
+.achievement-page .navbar-nav .nav-link.active { color: var(--accent); font-weight:600; border-bottom:2px solid var(--accent); }
+
+/* ensure content offset under fixed nav */
+.achievement-page .pt-nav { padding-top: var(--nav-height); }
+
+/* -------------------------
+   HERO with animated background (Ken-Burns)
+   ------------------------- */
+
+/* hero shell */
+.ach-hero {
+  position: relative;
+  min-height: calc(40vh - var(--nav-height));
+  display:flex;
+  align-items:center;
+  overflow: visible;
+  color: #fff;
+}
+
+/* the animated background element (single image) */
+/* NOTE: replace assets/images/achievement-hero.jpg with your chosen image. */
+/* -------------------------
+   HERO with animated background (Ken-Burns) — REPLACEMENT
+   Purpose: make the wave larger and overlap like the About page
+   ------------------------- */
+
+.ach-hero {
+  position: relative;
+  min-height: calc(70vh - var(--nav-height));
+  display:flex;
+  align-items:center;
+  overflow: visible;            /* allow the wave to overlap content below */
+  color: #fff;
+}
+
+/* animated background element (unchanged) */
+.ach-hero .ach-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('../assets/images/achievement-page.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  animation: ach-kenburns 18s ease-in-out infinite;
+  filter: brightness(.72);
+}
+
+/* overlay for contrast */
+.ach-hero .ach-hero-overlay {
+  position:absolute;
+  inset:0;
+  background: linear-gradient(rgba(0,0,0,0.40), rgba(0,0,0,0.28));
+  z-index:1;
+}
+
+/* hero content sits above background */
+.ach-hero .hero-content { position: relative; z-index:2; padding: 3rem 1rem; max-width: 980px; }
+
+/* -- NEW: larger wave that visibly cuts into the next section -- */
+.ach-hero .hero-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;            /* move wave down a little so it overlaps next section */
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* bigger svg height so curve is more pronounced (matches About page) */
+.ach-hero .hero-wave svg { display: block; width: 100%; height: 160px; }
+
+/* ensure wave uses the panel color (same as content background) */
+.ach-hero .hero-wave .wave-fill {
+  fill: var(--panel);
+}
+
+/* Section wave separators below use the same style and fill color */
+.section-wave { width:100%; overflow:hidden; line-height:0; }
+.section-wave svg { display:block; width:100%; height:88px; }
+.section-wave svg path { fill: var(--panel); }
+
+/* slight negative margin on the next section to hide any seam (keeps flow smooth) */
+#certificates { margin-top: -6px; padding-top: 28px; }
+
+/* small responsive adjustments */
+@media (max-width: 991px) {
+  .ach-hero { min-height: calc(36vh - var(--nav-height)); }
+  .ach-hero .hero-wave svg { height: 120px; bottom: -6px; }
+  .section-wave svg { height:64px; }
+}
+
+/* prefer-reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .ach-hero .ach-hero-bg { animation: none; transform: none; }
+}
+
+/* -------------------------
+   Certificates displayed as project-like cards
+   ------------------------- */
+
+.bg-panel { background: var(--panel); }
+.bg-white { background: #fff; }
+
+.project-card, .certificate-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(11,18,32,0.04);
+  transition: transform .22s ease, box-shadow .22s ease;
+  background: #ffffff;
+}
+.project-card:hover, .certificate-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(2,6,23,0.12), 0 4px 12px rgba(11,18,32,0.06);
+}
+
+/* image areas */
+.project-card .card-img-top, .certificate-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* card body */
+.project-card .card-body, .certificate-card .card-body { padding: 1rem; }
+
+/* buttons */
+.btn-primary { background: linear-gradient(180deg, var(--accent)); border: 0; color: #071018; }
+.btn-outline-primary { border-color: rgba(11,18,32,0.08); color: var(--text); }
+
+/* small text helper */
+.text-muted.small { color: rgba(11,18,32,0.6); }
+
+/* -------------------------
+   Project modals & certificate modal styles (dark)
+   ------------------------- */
+
+.modal-content.bg-dark { background: linear-gradient(180deg, #061226, #061226); border-radius: 10px; border: 0; }
+.modal-content .modal-title { color: #22d3ee; }
+.modal-body img { max-width: 100%; height: auto; border-radius: 6px; }
+
+/* -------------------------
+   Wave separators between sections
+   ------------------------- */
+.section-wave { width:100%; overflow:hidden; line-height:0; }
+.section-wave svg { display:block; width:100%; height:80px; }
+
+/* -------------------------
+   Responsive & utility rules
+   ------------------------- */
+@media (max-width: 991px) {
+  .carousel-cert-img { max-height: 300px; }
+  .project-card .card-img-top, .certificate-card .card-img-top { height: 160px; }
+}
+
+.achievement-page footer { color: var(--muted); padding-bottom: 48px; }
+
+/* reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .project-card, .project-card:hover { transform: none !important; transition: none !important; }
+  .certificate-card, .certificate-card:hover { transform: none !important; transition: none !important; }
+}
+
+/* =========================================================
+   FIX: Ensure Bootstrap modal sits above fixed navbar & allow modal-body scrolling
+   Append to css/achievement.css
+   ========================================================= */
+
+/* Raise modal z-index above the fixed navbar (navbar was z-index:1100) */
+.modal-backdrop {
+  z-index: 1990 !important;
+}
+.modal {
+  z-index: 2000 !important;
+}
+
+/* Limit modal-body height so long images/content scroll inside the modal */
+.modal-dialog {
+  max-width: 1100px; /* optional: keep dialogs reasonably wide on large screens */
+}
+.modal-body {
+  max-height: calc(100vh - 160px); /* viewport minus header + comfortable padding */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* Ensure modal images scale and stay contained */
+.modal-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Optional: keep modal-header visible (if you use custom header styles) */
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 2010;
+  background: transparent; /* keeps same look */
+}
+
+/* Reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .modal-body { scroll-behavior: auto; }
+}
+
+
+
+
+
+
+
+/* =========================================================
+   END: CSS: Achievement Page
+   ========================================================= */

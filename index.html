@@ -17,8 +17,8 @@
   <nav id="siteNavbar" class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="assets/images/profile.jpg" alt="Profile" class="profile-icon me-2">
-        <span class="fw-bold">YourName</span>
+        <!-- <img src="assets/images/profile.jpg" alt="Profile" class="profile-icon me-2"> -->
+        <span class="fw-bold">ALBERT</span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
@@ -54,11 +54,12 @@
 
       <!-- Hero content on top -->
       <div class="container position-relative hero-content">
-        <h1 class="display-4 fw-semibold hero-title">Welcome — Your Name</h1>
-        <p class="lead hero-sub">Frontend Developer • HTML • CSS • Bootstrap</p>
+        <h1 class="display-4 fw-semibold hero-title">HELLO ——————————</h1>
+        <h1 class="display-4 fw-semibold hero-title">I AM ALBERT G. MIRASOL JR.</h1>
+        <p class="lead hero-sub">Entry-Level Web & Mobile Developer</p>
         <div class="mt-3">
           <a href="#about-preview" class="btn btn-outline-light btn-lg me-2">About me</a>
-          <a href="assets/resume.pdf" class="btn btn-primary" download>Download CV</a>
+          <a href="assets/Albert_Mirasol_CV.pdf" class="btn btn-primary" download>Download CV</a>
         </div>
       </div>
     </section>
@@ -74,9 +75,9 @@
 
           <div class="col-lg-8">
             <h2>About Me</h2>
-            <p class="lead">Short 2–3 sentence summary about your professional identity. Mention your role, years of experience, and one or two highlights.</p>
+            <p class="lead">I am an entry-level full-stack developer with a Computer Science background and practical experience building web and mobile applications. I am also a Gamer who enjoy playing different kind of Games.</p>
 
-            <p>One or two lines that summarise tools you use and the value you produce. Keep it concise to encourage clicking “Read More.”</p>
+            <p>I have worked with React Native, Python, C#, Django, PHP, and Flutter to develop and integrate user-facing apps and simple backends.</p>
 
             <a class="btn btn-primary" href="about.html">Read More</a>
           </div>
@@ -86,45 +87,73 @@
 
     <hr class="my-0" />
 
-    <!-- SKILLS PREVIEW -->
-    <section id="skills-preview" class="py-5 bg-light">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row">
-          <div>
-            <h2>Skills</h2>
-            <p class="mb-3">Core competencies and technologies I use frequently.</p>
+    <section id="skills" class="skills-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-4 section-title">My Skills</h2>
 
-            <!-- Example skill badges -->
-            <div class="mb-3">
-              <span class="badge bg-primary me-1 mb-1">HTML</span>
-              <span class="badge bg-secondary me-1 mb-1">CSS</span>
-              <span class="badge bg-info text-dark me-1 mb-1">Bootstrap</span>
-              <span class="badge bg-success me-1 mb-1">JavaScript</span>
-              <span class="badge bg-warning text-dark me-1 mb-1">React</span>
-            </div>
+    <!-- Skill Selector -->
+    <div class="row justify-content-center g-4 mb-4">
 
-            <a class="btn btn-outline-primary" href="about.html">See more skills</a>
-          </div>
+      <!-- HTML -->
+      <div class="col-6 col-md-3">
+        <button class="skill-card" data-bs-toggle="collapse" data-bs-target="#skill-html">
+          <img src="assets/images/sofskill.jpg" alt="HTML">
+          <span>Soft Skills</span>
+        </button>
+      </div>
 
-          <div class="text-end d-none d-lg-block" style="max-width: 320px;">
-            <div class="p-3 border rounded">
-              <strong>Primary focus</strong>
-              <p class="mb-0 small">Responsive UI, performance, accessibility.</p>
-            </div>
-          </div>
+      <!-- CSS -->
+      <div class="col-6 col-md-3">
+        <button class="skill-card" data-bs-toggle="collapse" data-bs-target="#skill-css">
+          <img src="assets/images/techskill.jpg" alt="CSS">
+          <span>Techinical Skills</span>
+        </button>
+      </div>
+
+     
+
+    </div>
+
+    <!-- Skill Details (Expanding Panel) -->
+
+    <div class="collapse skill-detail" id="skill-html">
+      <div class="skill-detail-card">
+        <h4>Soft Skills</h4>
+        <p>
+          I bring strong communication, organization, and collaboration skills developed through customer-facing and remote work environments. I am detail-oriented, adaptable, and able to manage tasks efficiently while maintaining professional standards...
+        </p>
+      </div>
+    </div>
+
+    <div class="collapse skill-detail" id="skill-css">
+      <div class="skill-detail-card">
+        <h4>Techinical Skills</h4>
+        <p>
+          I have hands-on experience developing web and mobile applications using modern frameworks and programming languages. My skill set includes front-end and mobile development, basic backend integration, and API consumption, supported by version control and collaborative workflows. I am comfortable building, testing, and improving applications through academic and personal projects...
+        </p>
+      </div>
+    </div>
+
+    
+    <!-- Centered CTA for Work Experience -->
+        <div class="text-center mt-4">
+          <a href="about.html" class="btn btn-primary">View More</a>
         </div>
       </div>
-    </section>
+
+  </div>
+</section>
+
 
     <hr class="my-0" />
 
-    <!-- WORK EXPERIENCE PREVIEW -->
+    <!-- WORK EXPERIENCE PREVIEW 
     <section id="experience-preview" class="py-5">
       <div class="container">
         <h2 class="mb-4">Work Experience</h2>
 
         <div class="row g-3">
-          <!-- Job card 1 -->
+             Job card 1 
           <div class="col-md-6">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
@@ -135,7 +164,7 @@
             </div>
           </div>
 
-          <!-- Job card 2 -->
+           Job card 2
           <div class="col-md-6">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
@@ -147,12 +176,12 @@
           </div>
         </div>
 
-        <!-- Centered CTA for Work Experience -->
+         Centered CTA for Work Experience 
         <div class="text-center mt-4">
           <a href="achievement.html" class="btn btn-primary">View Achievements</a>
         </div>
       </div>
-    </section>
+    </section>  -->
 
     <hr class="my-0" />
 
@@ -161,7 +190,7 @@
       <div class="container">
         <div class="text-center mb-4">
           <h2>Certificates</h2>
-          <p class="text-muted small">Auto-rotates every 3 seconds. Use arrows to navigate.</p>
+          <p class="text-muted small">Below is my Certificate I Gain.</p>
         </div>
 
         <!-- Bootstrap carousel -->
@@ -200,7 +229,7 @@
     </section>
 
     <footer class="py-4 text-center small">
-      © <span id="year"></span> Your Name
+      © <span id="year"></span>  Albert G Mirasol Jr.
     </footer>
 
   </main>

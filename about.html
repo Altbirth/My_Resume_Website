@@ -5,17 +5,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About — My Resume Website</title>
 
+  <!-- Bootstrap CSS (layout) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
 
-  <!-- Fixed header (shared) -->
+  <!-- Page-specific CSS only -->
+  <link rel="stylesheet" href="css/about.css">
+</head>
+<body class="about-page">
+
+  <!-- NAVBAR: identical structure to Home (brand left, links right, fixed-top) -->
   <nav id="siteNavbar" class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="assets/images/profile.jpg" alt="Profile" class="profile-icon me-2">
-        <span class="fw-bold">YourName</span>
+        <!-- <img src="assets/images/profile.png" alt="Profile" class="profile-icon me-2"> -->
+        <span class="fw-bold">ALBERT</span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
@@ -23,7 +26,7 @@
       </button>
 
       <div class="collapse navbar-collapse justify-content-end" id="navMain">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav align-items-center">
           <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
           <li class="nav-item"><a class="nav-link active" href="about.html">ABOUT ME</a></li>
           <li class="nav-item"><a class="nav-link" href="achievement.html">ACHIEVEMENT</a></li>
@@ -35,136 +38,194 @@
 
   <main class="pt-nav">
 
-    <!-- HERO (single background image, overlay, left-aligned large text) -->
-    <header class="about-hero d-flex align-items-center">
-      <div class="about-hero-overlay" aria-hidden="true"></div>
+    <!-- HERO: single background image, centered hero content (larger/zoomed background) -->
+    <section class="hero d-flex align-items-center justify-content-center">
+      <div class="hero-overlay" aria-hidden="true"></div>
 
-      <div class="container position-relative">
-        <div class="row">
-          <div class="col-lg-7 col-md-9">
-            <h1 class="about-hero-title">It's time to know me</h1>
-            <p class="about-hero-sub">I build beautiful and accessible front-end experiences. I use HTML, CSS, Bootstrap and modern JavaScript to create responsive, fast interfaces.</p>
-          </div>
+      <div class="container hero-content text-center">
+        <h1 class="hero-title">It's Time To Know Me</h1>
+        <p class="hero-sub lead-first">Entry-Level Full-Stack Developer | Web & Mobile Projects | Gamer | Tech-Savvy Virtual Assistant | Remote-Ready </p>
+        <div class="mt-3">
+          <a class="btn btn-primary btn-lg" href="#about-content">Know More</a>
         </div>
       </div>
-    </header>
 
-    <!-- Wave separator (downwards) -->
-    <div class="wave wave-down" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#ffffff"></path>
-      </svg>
-    </div>
+      <!-- wave bottom -->
+      <div class="hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="wave-fill" d="M0,40 C360,120 720,0 1080,40 C1260,64 1320,88 1440,96 L1440 140 L0 140 Z"></path>
+        </svg>
+      </div>
+    </section>
 
-    <!-- ABOUT CONTENT: text left, image right -->
-    <section id="about-content" class="py-5 bg-white">
+    <!-- ABOUT CONTENT: keep previous layout (text left, image right) -->
+    <section id="about-content" class="py-5 bg-panel">
       <div class="container">
         <div class="row align-items-center gy-4">
           <div class="col-lg-7 order-2 order-lg-1">
             <h2>About me</h2>
-            <p class="lead">Write a concise professional summary here. Mention experience, specialties, and one or two measurable results or strengths.</p>
-
-            <p>I focus on building responsive, maintainable front-end code. I worked on projects where I improved performance, accessibility, and user experience. I collaborate well with designers and back-end engineers to deliver production-ready interfaces.</p>
-
-            <ul>
-              <li>Frontend development (HTML, CSS, JS, Bootstrap)</li>
-              <li>Responsive & accessible UI</li>
-              <li>Performance tuning and optimization</li>
-            </ul>
-
-            <a class="btn btn-primary mt-2" href="index.html">Back to Home</a>
+            <p class="lead">I am an entry-level full-stack developer with a Computer Science background and practical experience building web and mobile applications. I am also a Gamer who enjoy playing different kind of Games.</p>
+            <p>I have worked with React Native, Python, C#, Django, PHP, and Flutter to develop and integrate user-facing apps and simple backends. Combined with professional experience in customer support and document management at Foundever, I bring strong communication, organization, and problem-solving skills to collaborative development teams.</p>
+            
           </div>
 
           <div class="col-lg-5 text-center order-1 order-lg-2">
-            <img src="assets/images/profile1.jpeg" alt="Your Name" class="rounded profile-large shadow-sm">
+            <img src="assets/images/profile.jpg" alt="Your Name" class="rounded profile-large shadow-sm">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Wave separator (upwards) -->
-    <div class="wave wave-up" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,48 C240,16 480,64 720,32 C960,0 1200,80 1440,32 L1440 0 L0 0 Z" fill="#f8f9fa"></path>
-      </svg>
+    <!-- wave -->
+    <div class="section-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#ffffff"></path></svg>
+    </div>
+
+    <!-- HOBBIES (carousel: restored) -->
+    <section id="my-hobbies" class="py-5 bg-white">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="mb-0">My Hobbies</h2>
+        </div>
+
+        <div id="hobbiesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                  <img src="assets/images/games.jpg" alt="Hobby 1" class="img-fluid hobby-img rounded">
+                </div>
+                <div class="col-md-8">
+                  <h3>Games</h3>
+                  <p>I enjoy playing Games such as Dota2, Valorant, left4Dead, Project Zombiod and SinglePlayer games</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                  <img src="assets/images/anime-pic.jpg" alt="Hobby 2" class="img-fluid hobby-img rounded">
+                </div>
+                <div class="col-md-8">
+                  <h3>Anime&Mange</h3>
+                  <p>Watching Anime and reading Manga, Manhwa, Manhua is my favorite pastime and relaxation activity</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                  <img src="assets/images/basketball-pic.jpg" alt="Hobby 3" class="img-fluid hobby-img rounded">
+                </div>
+                <div class="col-md-8">
+                  <h3>Basketball</h3>
+                  <p>I enjoy playing Basketball with my friend on my free time. This help me relax and exercise. </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                  <img src="assets/images/badminton-pic.jpg" alt="Hobby 4" class="img-fluid hobby-img rounded">
+                </div>
+                <div class="col-md-8">
+                  <h3>Badminton</h3>
+                  <p>Badminton is one of my favorite sport in High School, I often participate in Competition to improve my skill.  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#hobbiesCarousel" data-bs-slide="prev" aria-label="Previous hobby">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#hobbiesCarousel" data-bs-slide="next" aria-label="Next hobby">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- wave -->
+    <div class="section-wave section-wave--alt">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#f6f7f5"></path></svg>
     </div>
 
     <!-- SKILLS -->
-    <section id="about-skills" class="py-5 bg-light">
+    <section id="about-skills" class="py-5 bg-panel">
       <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="mb-0">Skills</h2>
-          <a href="about.html" class="btn btn-outline-secondary d-lg-none">See full</a>
-        </div>
-
+        <h3>My Skills</h3>
         <div class="row g-3 mt-3">
-          <div class="col-md-4">
-            <h6>Frontend</h6>
-            <p>HTML · CSS · Bootstrap · JavaScript</p>
+           <div class="col-md-4"><h6>Techinical Skills</h6>
+            <p>· HTML/CSS </p>
+            <p>· Bootstrap </p>
+            <p>· React Native </p>
+            <p>· Flutter </p>
+            <p>· Python </p>
+            <p>· C# </p>
+            <p>· PHP </p>
+            <p>· Django </p>  
+            <p>· Git & GitHub </p>  
+            <p>· REST API Integration </p> 
+            <p>· Mobile Application Development </p>  
+            <p>· Web Application Development </p>  
           </div>
-          <div class="col-md-4">
-            <h6>Tools</h6>
-            <p>Git · VS Code · Chrome DevTools</p>
+
+          <div class="col-md-4"><h6>Soft Skills</h6>
+            <p>· Clear Communication </p>
+            <p>· Team Collaboration </p>
+            <p>· Problem Solving </p>
+            <p>· Adaptability </p>
+            <p>· Time Management </p>
           </div>
-          <div class="col-md-4">
-            <h6>Other</h6>
-            <p>Responsive design · Accessibility · Performance</p>
-          </div>
+          
         </div>
       </div>
     </section>
 
-    <!-- Wave separator -->
-    <div class="wave wave-down" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#ffffff"></path>
-      </svg>
+    <!-- wave -->
+    <div class="section-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#ffffff"></path></svg>
     </div>
 
     <!-- EDUCATION -->
     <section id="about-education" class="py-5 bg-white">
       <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="mb-0">Education</h2>
-        </div>
-
-        <div class="timeline mt-4">
+        <h3>Education</h3>
+        <div class="timeline mt-3">
           <div class="timeline-item">
             <div class="timeline-left">
               <strong>B.S. Computer Science</strong>
-              <div class="small-muted">University Name — 2018 — 2022</div>
+              <div class="small-muted">Palawan State University — 2021 - 2025</div>
             </div>
-            <div class="timeline-right">
-              <p>Relevant coursework: Web Development, Data Structures, UX basics.</p>
-            </div>
-          </div>
 
-          <!-- add more education items as needed -->
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Wave separator -->
-    <div class="wave wave-up" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,48 C240,16 480,64 720,32 C960,0 1200,80 1440,32 L1440 0 L0 0 Z" fill="#f8f9fa"></path>
-      </svg>
+    <!-- wave -->
+    <div class="section-wave section-wave--alt">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#f6f7f5"></path></svg>
     </div>
 
     <!-- WORK EXPERIENCE -->
-    <section id="about-work" class="py-5 bg-light">
+    <section id="about-work" class="py-5 bg-panel">
       <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="mb-0">Work Experience</h2>
-        </div>
-
+        <h3>Work Experience</h3>
         <div class="row g-4 mt-3">
           <div class="col-md-6">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
-                <h5 class="card-title">Frontend Developer — Company A</h5>
-                <p class="text-muted small mb-2">Jan 2022 — Present</p>
-                <p>Built responsive user interfaces; improved page-load metrics and accessibility.</p>
+                <h5 class="card-title">On the Job Training </h5>
+                <p class="text-muted small mb-2">Provincial General Services Office | February - April, 2025</p>
+                <p>Managed document lifecycle in the Records Division: logged incoming/outgoing files in the electronic system, 
+                  maintained tracking logs, and coordinated inter‑office deliveries</p>
               </div>
             </div>
           </div>
@@ -172,26 +233,31 @@
           <div class="col-md-6">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
-                <h5 class="card-title">Intern — Company B</h5>
-                <p class="text-muted small mb-2">Jun 2021 — Dec 2021</p>
-                <p>Assisted in front-end features and quality improvements for public pages.</p>
+                <h5 class="card-title">Foundever</h5>
+                <p class="text-muted small mb-2">Customer Sales Representative | August, 2025 December, 2025</p>
+                <p>I handled account-related concerns, resolved client issues, documented interactions accurately, and maintained strong communication even during challenging customer situations.</p>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <footer class="py-4 text-center small">
-      © <span id="year"></span> Your Name
-    </footer>
+    <!-- final wave -->
+    <div class="section-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,32 C240,100 480,0 720,32 C960,64 1200,16 1440,48 L1440 80 L0 80 Z" fill="#ffffff"></path></svg>
+    </div>
 
+    <footer class="py-4 text-center small">
+      © <span id="year"></span>  Albert G Mirasol Jr.
+    </footer>
   </main>
 
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
-    // set year
+    // set current year
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
