@@ -6,6 +6,147 @@
    - Remaining rules preserved from prior file (hero, cards, etc.)
    ========================================================================= */
 
+/* ===========================
+   MOBILE RESPONSIVENESS PATCH
+   Paste/append to css/style.css
+   Purpose: make hero/header/buttons readable and usable on phones
+   =========================== */
+
+@media (max-width: 991px) {
+  /* slightly reduce navbar height on narrow screens */
+  :root { --nav-height: 64px; }
+
+  /* smaller profile icon so header uses less vertical space */
+  #siteNavbar .profile-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* ensure the navbar container spacing remains consistent */
+  #siteNavbar .container {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    max-width: 100%;
+  }
+
+  /* ensure collapsed menu is readable */
+  .navbar-collapse {
+    background: rgba(255,255,255,0.98);
+    margin-top: 0.25rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  }
+}
+
+/* Target narrow phones specifically */
+@media (max-width: 767px) {
+
+  /* Reduce hero height so most content is visible without extra scrolling */
+  .hero, .ach-hero {
+    min-height: calc(50vh - var(--nav-height));
+    align-items: center;
+  }
+
+  /* Hero content: center, smaller padding */
+  .hero-content, .ach-hero .hero-content {
+    padding: 1.6rem 1rem;
+    max-width: 92%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Title: reduce size, line-height, letter-spacing for small screens */
+  .hero-title, .hero .hero-title, .ach-hero h1, .hero h1 {
+    font-size: clamp(1.6rem, 7.5vw, 2.0rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.35rem;
+    word-break: break-word;
+  }
+
+  /* Subtitle smaller */
+  .hero-sub, .hero .hero-sub, .hero p.lead {
+    font-size: clamp(0.9rem, 3.6vw, 1.05rem);
+    opacity: 0.95;
+    margin-bottom: 0.85rem;
+  }
+
+  /* Reduce decorative separators or large borders that push text down */
+  .hero .decorative-line, .hero .divider, .hero .hero-sep {
+    display: none !important;
+  }
+
+  /* CTA buttons: stack vertically and use full width for easy tapping */
+  .hero .btn, .hero-content .btn {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    margin: 0.45rem 0 !important;
+    padding: 0.7rem 0.9rem;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  /* When two CTAs exist, keep spacing consistent */
+  .hero .btn + .btn { margin-top: 0.5rem; }
+
+  /* If you used .profile-large near the hero, keep it smaller */
+  .profile-large {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Ensure large background images don't push text off-screen awkwardly */
+  .hero .hero-slide, .ach-hero .ach-hero-bg {
+    background-position: center 30% !important;
+    background-size: cover !important;
+  }
+
+  /* Make nav toggle button more visible and not overlapping the page */
+  .navbar-toggler {
+    border-radius: 8px;
+    padding: .45rem .5rem;
+  }
+
+  /* Make nav links touch-friendly inside collapsed menu */
+  .navbar-collapse .nav-link {
+    padding: .7rem 1rem;
+    font-size: 0.98rem;
+  }
+
+  /* Reduce card image height for mobile so content below shows faster */
+  .card .card-img-top, .project-card .card-img-top, .certificate-card .card-img-top {
+    height: 140px !important;
+  }
+
+  /* Slightly reduce footer padding on small screens */
+  footer { padding: 18px 12px; }
+}
+
+/* Accessibility: ensure text wraps and does not overflow */
+.hero-content, .hero-title, .hero-sub, .card, .project-card, .certificate-card {
+  word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Safety: if your hero text were absolutely positioned, ensure it is not hidden */
+.hero .hero-content[style], .ach-hero .hero-content[style] {
+  position: relative !important;
+  transform: none !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+/* Optional: ensure viewport meta is present. If not present in your HTML head, add:
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+*/
+
+
+
+
+
+
+
 /* -------------------------
    Root variables (easy customization)
    ------------------------- */
